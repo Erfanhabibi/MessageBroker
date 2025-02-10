@@ -5,6 +5,7 @@ public interface IMessageBroker
     void SendMessage(Message message);
     Message? ReceiveMessage();
 
-    void SaveMessageInFile(string filePath);
-    void LoadMessageFromFile(string filePath);
+    void SaveMessageInFile( Message message);
+    void LoadMessageFromFile();
+    void RemoveMessageFromFile();
 }

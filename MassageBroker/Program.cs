@@ -8,11 +8,12 @@ namespace MessageBroker;
 
 class Program
 {
+
     static void Main(string[] args)
     {
         IMessageBroker broker = new Broker.MessageBroker();
 
-        broker.LoadMessageFromFile("messages.txt");
+        //broker.LoadMessageFromFile();
 
 
         IProducer producer = new Producer.Producer(broker);
