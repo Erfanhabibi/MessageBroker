@@ -8,12 +8,9 @@ namespace MessageBroker;
 
 class Program
 {
-
     static void Main(string[] args)
     {
         IMessageBroker broker = new Broker.MessageBroker();
-
-        //broker.LoadMessageFromFile();
 
 
         IProducer producer = new Producer.Producer(broker);
@@ -42,7 +39,7 @@ class Program
         while (true)
         {
             consumer.Consume();
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
         }
     }
 }

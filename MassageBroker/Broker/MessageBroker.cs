@@ -10,7 +10,6 @@ public class MessageBroker : IMessageBroker
 
     private readonly string _filePath = Path.Combine(AppContext.BaseDirectory, @"..\..\..\Storage\messages.txt");
 
-
     public MessageBroker()
     {
         LoadMessageFromFile();

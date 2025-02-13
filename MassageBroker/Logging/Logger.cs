@@ -1,5 +1,5 @@
 ﻿namespace MessageBroker.Logging;
 
-internal class Logger
+public class Logger
 {
 }
