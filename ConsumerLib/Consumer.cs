@@ -11,8 +11,16 @@ public class Consumer : IConsumer
         _broker = broker;
     }
 
-    public Message? Consume()
+    public void Consume()
     {
-        return _broker.ReceiveMessage();
+        var message = _broker.ReceiveMessage();
+        if (message != null)
+        {
+            Console.WriteLine($"[Consumer] Received message: {message.Content}");
+        }
+        else
+        {
+            Console.WriteLine("[Consumer] No message received");
+        }
     }
 }

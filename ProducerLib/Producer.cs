@@ -15,5 +15,6 @@ public class Producer : IProducer
     {
         var message = new Message { Content = content };
         _broker.SendMessage(message);
+        Console.WriteLine($"[Producer] Sent message: {content}");
     }
 }

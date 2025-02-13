@@ -1,6 +1,4 @@
-﻿using MessageBrokerLib;
-
-namespace ProducerLib;
+﻿namespace ProducerLib;
 
 public interface IProducer
 {

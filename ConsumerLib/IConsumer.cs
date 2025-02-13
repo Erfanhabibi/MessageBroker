@@ -1,8 +1,6 @@
-﻿using MessageBrokerLib;
-
-namespace ConsumerLib;
+﻿namespace ConsumerLib;
 
 public interface IConsumer
 {
-    Message? Consume();
+    void Consume();
 }
