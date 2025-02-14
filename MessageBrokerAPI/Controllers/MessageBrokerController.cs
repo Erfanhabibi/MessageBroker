@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MessageBrokerLib;
+using MessageBrokerLib.Broker;
 
 namespace MessageBrokerApi.Controllers;
 

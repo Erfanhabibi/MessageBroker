@@ -1,6 +1,6 @@
-﻿using MessageBrokerLib.Broker;
+﻿
 
-namespace MessageBrokerLib;
+namespace MessageBrokerLib.Broker;
 
 public interface IMessageBroker
 {

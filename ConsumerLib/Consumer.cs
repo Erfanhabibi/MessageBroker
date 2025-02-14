@@ -1,26 +1,44 @@
-﻿using MessageBrokerLib;
+﻿using MessageBrokerLib.Broker;
+using MessageBrokerLib.Logging;
 
 namespace ConsumerLib;
 
 public class Consumer : IConsumer
 {
     private readonly IMessageBroker _broker;
+    private readonly int _threadCount;
 
-    public Consumer(IMessageBroker broker)
+    public Consumer(IMessageBroker broker, int threadCount)
     {
         _broker = broker;
+        _threadCount = threadCount;
     }
 
     public void Consume()
     {
-        var message = _broker.ReceiveMessage();
-        if (message != null)
+        var tasks = new List<Task>();
+
+        for (int i = 0; i < _threadCount; i++)
         {
-            Console.WriteLine($"[Consumer] Received message: {message.Content}");
+            tasks.Add(Task.Run(() => ConsumeMessage()));
         }
-        else
+
+        Task.WaitAll(tasks.ToArray());
+    }
+
+    private void ConsumeMessage()
+    {
+        while (true)
         {
-            Console.WriteLine("[Consumer] No message received");
+            var message = _broker.ReceiveMessage();
+            if (message != null)
+            {
+                Logger.Log($"[Consumer] Received message: {message.Content}", LogLevel.Info);
+            }
+            else
+            {
+                break;
+            }
         }
     }
 }
